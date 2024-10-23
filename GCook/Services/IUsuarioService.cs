@@ -10,4 +10,5 @@ namespace GCook.Services;
         Task LogoffUsuario();
         Task<List<string>> RegistrarUsuario(RegistroVM registro);
         Task<bool> ConfirmarEmail(string userId, string code);
-    }
+
+}

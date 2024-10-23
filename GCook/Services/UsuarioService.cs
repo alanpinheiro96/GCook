@@ -89,11 +89,11 @@ public class UsuarioService : IUsuarioService
         {
             var user = await _userManager.FindByEmailAsync(login.Email);
             if (user != null)
-            userName = user.UserName;
+            UserName = user.UserName;
         }
 
         var result = await _signInManager.PasswordSignInAsync(
-            userName, login.Senha, login.Lembrar, lockoutOnFailure: true
+            UserName, login.Senha, login.Lembrar, lockoutOnFailure: true
         );
         
         if (result.Succeeded)
@@ -122,10 +122,10 @@ public class UsuarioService : IUsuarioService
         {
             _logger.LogInformation($"Novo usuário registrado com o email {user.Email}.");
 
-            var userId = await _userManager.GetUserAsync(user);
+            var userId = await _userManager.GetUserIdAsync(user);
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            code = WebEncoders.Base64UrlDecode(Encoding.UTF8.GetBytes(code));
-            var url = $"http://localhost:5143/Account/ConfirmarEmail?userId={userId}&code={code}";
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            var url = $"http://localhost:5268/Account/ConfirmarEmail?userId={userId}&code={code}";
 
             await _userManager.AddToRoleAsync(user, "Usuário");
 

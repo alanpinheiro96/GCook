@@ -7,11 +7,11 @@ namespace GCook.Controllers;
 [Authorize(Roles = "Administrador")]
 public class AdminController : Controller
 {
-    private readonly ILogger<AdminController> _Logger;
+    private readonly ILogger<AdminController> _logger;
 
     public AdminController(ILogger<AdminController> logger)
     {
-        _Logger = logger;
+        _logger = logger;
     }
 
     public IActionResult Index()

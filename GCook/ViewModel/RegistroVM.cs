@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
+
 
 namespace GCook.ViewModels;
 
@@ -29,7 +29,7 @@ public class RegistroVM
     public string Senha { get; set; }
 
     [DataType(DataType.Password)]
-    [Display(Name = "Senha de Acesso", Prompt = "Informe sua Senha para Acesso")]
+    [Display(Name = "Confirma Senha de Acesso", Prompt = "Confirme sua Senha para Acesso")]
     [Compare("Senha", ErrorMessage = "As senhas não Conferem")]
     public string ConfirmacaoSenha { get; set; }
 
