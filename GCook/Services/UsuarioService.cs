@@ -18,7 +18,7 @@ public class UsuarioService : IUsuarioService
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly IHttpContextAccessor _httpContextAcessor;
-    private readonly IUserEmailStore<IdentityUser> _userStore;
+    private readonly IUserStore<IdentityUser> _userStore;
     private readonly IUserEmailStore<IdentityUser> _emailStore;
     private readonly IWebHostEnvironment _hostEnvironment;
     private readonly IEmailSender _emailSender;
@@ -29,12 +29,13 @@ public class UsuarioService : IUsuarioService
         SignInManager<IdentityUser> signInManager,
         UserManager<IdentityUser> userManager,
         IHttpContextAccessor httpContextAcessor,
-        IUserEmailStore<IdentityUser> userStore,
+        IUserStore<IdentityUser> userStore,
         IWebHostEnvironment hostEnvironment,
         IEmailSender emailSender,
         ILogger<UsuarioService> logger
     )
     {
+     _contexto = contexto;   
     _signInManager =  signInManager;
     _userManager = userManager;
     _httpContextAcessor = httpContextAcessor;

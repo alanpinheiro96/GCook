@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 
-
 namespace GCook.ViewModels;
 
 public class RegistroVM
